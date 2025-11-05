@@ -4,14 +4,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Installation de graphviz
-      run: sudo apt-get install graphviz -y
     - name: Check out repository code
       uses: actions/checkout@v3
+    - name: Installation de graphviz
+      run: sudo apt-get update && sudo apt-get install -y graphviz
     - name: Lancement graphviz
       run: ./run2.sh *.dot
-    - name: upload du resultat
+    - name: Upload du résultat
       uses: actions/upload-artifact@v4
       with:
         name: resultat-graphviz
         path: *.svg
+
